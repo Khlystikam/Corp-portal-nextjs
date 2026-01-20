@@ -47,23 +47,20 @@ export const Sidebar = () => {
 								href={item.href}
 								className={
 									isActive
-										? `flex items-center gap-4 p-2 rounded-lg transition-colors group bg-violet-600/80 text-amber-100 font-bold`
-										: `flex items-center gap-4 p-2 rounded-lg transition-colors group bg-slate-700/50 hover:bg-slate-700`
+										? ` flex items-center gap-4 p-2 rounded-lg transition-colors group bg-violet-600/80 text-amber-100 font-bold`
+										: ` flex items-center gap-4 p-2 rounded-lg transition-colors group bg-slate-700/50 hover:bg-slate-700`
 								}
 							>
 								<item.icon size={24} className="min-w-6" />
 
 								<span className={spanTextButton + " whitespace-nowrap overflow-hidden transition-all duration-300"}>{item.label}</span>
-
-								{/* Тултип при наведении, если свернуто (опционально) */}
-								{collapsed && <div className="absolute left-16 bg-slate-800 text-white px-2 py-1 rounded md:hidden group-hover:block z-50">{item.label}</div>}
 							</Link>
 						);
 					})}
 				</nav>
 
 				{/* Footer сайдбара */}
-				<div className="absolute bottom-0 p-4 ">Version {VERSION_APP}</div>
+				<div className="absolute w-1/1 bottom-0 text-center">Version {VERSION_APP}</div>
 			</aside>
 		</div>
 	);

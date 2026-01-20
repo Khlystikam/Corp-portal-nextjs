@@ -6,5 +6,6 @@
 
 body {
   background-color: light-dark(#818cf8, #1E2939); /* Светлый фон, тёмный фон */
-  color: light-dark(#1e1b4b, #FFD7A8); /* Тёмный текст, светлый текст */
+  color: light-dark(#1e1b4b, #FFD7A8);
+  font-size: 14px;
 }

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Header } from "@/app/widgets/Header/Header";
 import { Sidebar } from "@/app/widgets/Sidebar/Sidebar";
 import "./globals.css";
 
@@ -14,12 +15,16 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className="antialiased w-screen h-screen overflow-x-hidden overflow-y-auto p-5" cz-shortcut-listen="true">
-				<div className="text-[32px] align-middle m-3">Header</div>
+			<body cz-shortcut-listen="true">
+				<div className="antialiased w-screen h-screen overflow-x-hidden overflow-y-auto p-5 min-w-112.5">
+					<div className="w-full h-8/100 text-[32px] align-middle m-3">
+						<Header />
+					</div>
 
-				<div className="flex flex-row w-full justify-between h-[88vh] gap-5">
-					<Sidebar />
-					{children}
+					<div className="flex flex-row w-full justify-between h-[88vh] gap-5">
+						<Sidebar />
+						{children}
+					</div>
 				</div>
 			</body>
 		</html>
