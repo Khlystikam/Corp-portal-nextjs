@@ -16,12 +16,12 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body cz-shortcut-listen="true">
-				<div className="antialiased w-screen h-screen overflow-x-hidden overflow-y-auto p-5 min-w-112.5">
-					<div className="w-full h-8/100 text-[32px] align-middle m-3">
+				<div className="flex flex-col antialiased w-screen h-screen overflow-x-hidden overflow-y-auto gap-3 p-5 min-w-112.5">
+					<div className="w-full h-[8%] text-[32px] align-middle">
 						<Header />
 					</div>
 
-					<div className="flex flex-row w-full justify-between h-[88vh] gap-5">
+					<div className="flex flex-row w-full justify-between h-[90%] gap-5">
 						<Sidebar />
 						{children}
 					</div>

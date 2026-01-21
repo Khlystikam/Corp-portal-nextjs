@@ -9,18 +9,18 @@ import { VERSION_APP } from "../../../settings";
 
 export const Sidebar = () => {
 	const [collapsed, setCollapsed] = useState(false);
-	const [widthSidebar, setWidthSidebar] = useState("w-15/100");
+	const [widthSidebar, setWidthSidebar] = useState("w-[15%]");
 	const [spanTextButton, setSpanTextButton] = useState("visible");
 	const pathname = usePathname();
 
 	const hideOpenSidebar = () => {
 		if (!collapsed) {
 			setCollapsed(true);
-			setWidthSidebar("w-5/100");
+			setWidthSidebar("w-[5%]");
 			setSpanTextButton("hidden");
 		} else {
 			setCollapsed(false);
-			setWidthSidebar("w-15/100");
+			setWidthSidebar("w-[15%]");
 			setSpanTextButton("visible");
 		}
 	};
@@ -53,7 +53,9 @@ export const Sidebar = () => {
 							>
 								<item.icon size={24} className="min-w-6" />
 
-								<span className={spanTextButton + " whitespace-nowrap overflow-hidden transition-all duration-300"}>{item.label}</span>
+								<span className={spanTextButton + " text-xs md:text-sm lg:text-base whitespace-nowrap overflow-hidden transition-all duration-300"}>
+									{item.label}
+								</span>
 							</Link>
 						);
 					})}
