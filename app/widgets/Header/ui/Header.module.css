@@ -1,0 +1,25 @@
+.button {
+	font-size: 18px;
+}
+
+/* медиазапросы */
+/* screen 425px */
+@media screen and (max-width: 425px) {
+	.button {
+		font-size: 12px;
+	}
+}
+
+/* screen 768px */
+@media screen and (max-width: 768px) {
+	.button {
+		font-size: 14px;
+	}
+}
+
+/* screen 768px */
+@media screen and (max-width: 992px) {
+	.button {
+		font-size: 16px;
+	}
+}

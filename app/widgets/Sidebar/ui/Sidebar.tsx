@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { SIDEBAR_ITEMS } from "../model/SidebarItems"; // Алиас @ настроен в tsconfig
+import { SIDEBAR_ITEMS } from "../model/SidebarItems";
 import { VERSION_APP } from "../../../settings";
 
 export const Sidebar = () => {

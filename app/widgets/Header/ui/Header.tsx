@@ -1,9 +1,19 @@
 "use client";
 
+import { useState } from "react";
 import { HEADER_ITEMS } from "../model/HeaderIconsItem";
 import { LiveDateTime } from "./DateClock";
+import Button from "@/app/components/Buttons/Buttons";
+import Popup from "@/app/components/Popup/Popup";
+import styles from "./Header.module.css";
 
 export const Header = () => {
+	const [openPopup, setOpenPopup] = useState(false);
+
+	const openPopupHandler = () => {
+		setOpenPopup(!openPopup);
+	};
+
 	return (
 		<div className="flex flex-row justify-between w-full h-full">
 			{/*  */}
@@ -35,9 +45,10 @@ export const Header = () => {
 			</div>
 
 			{/* логирование/ЛК */}
-			<div className="flex w-10/100 h-full bg-gray-900/50 p-2 rounded-[10px] text-sm md:text-lg lg:text-xl self-center">
-				<p className="text-sm md:text-lg lg:text-xl self-center">Login/Logout</p>
+			<div className={styles.button + " button-lk flex w-10/100 h-full bg-gray-900/50 p-3 rounded-[10px] text-sm md:text-lg lg:text-xl self-center"}>
+				{Button(() => openPopupHandler(), "Вход")}
 			</div>
+			{openPopup && Popup("w-[300px]", "h-[500px]")}
 		</div>
 	);
 };
