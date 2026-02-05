@@ -8,10 +8,14 @@ import Popup from "@/app/components/Popup/Popup";
 import styles from "./Header.module.css";
 
 export const Header = () => {
-	const [openPopup, setOpenPopup] = useState(false);
+	const [isOpen, setIsOpen] = useState(false);
 
 	const openPopupHandler = () => {
-		setOpenPopup(!openPopup);
+		setIsOpen(true);
+	};
+
+	const closePopupHandler = () => {
+		setIsOpen(false);
 	};
 
 	return (
@@ -48,7 +52,8 @@ export const Header = () => {
 			<div className={styles.button + " button-lk flex w-10/100 h-full bg-gray-900/50 p-3 rounded-[10px] text-sm md:text-lg lg:text-xl self-center"}>
 				{Button(() => openPopupHandler(), "Вход")}
 			</div>
-			{openPopup && Popup("w-[300px]", "h-[500px]")}
+
+			{isOpen && <Popup width="w-[50%]" height="h-[60%]" onClose={closePopupHandler} />}
 		</div>
 	);
 };

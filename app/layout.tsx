@@ -16,7 +16,7 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className="relative" cz-shortcut-listen="true">
-				<div className="flex flex-col antialiased w-screen h-screen overflow-x-hidden overflow-y-auto gap-3 p-5 min-w-112.5">
+				<div className="flex flex-col antialiased w-screen h-screen overflow-x-hidden overflow-y-auto gap-3 p-5 min-w-200">
 					<div className="w-full h-[8%] text-[32px] align-middle">
 						<Header />
 					</div>
