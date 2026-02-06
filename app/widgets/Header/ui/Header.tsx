@@ -9,6 +9,7 @@ import styles from "./Header.module.css";
 
 export const Header = () => {
 	const [isOpen, setIsOpen] = useState(false);
+	const [author, setAuthor] = useState(false);
 
 	const openPopupHandler = () => {
 		setIsOpen(true);
@@ -16,6 +17,29 @@ export const Header = () => {
 
 	const closePopupHandler = () => {
 		setIsOpen(false);
+	};
+
+	const successfulAuthor = () => {
+		setAuthor(true);
+	};
+
+	const FormAuthor = () => {
+		return (
+			<form className="flex flex-col justify-between items-center gap-3 w-[60%] h-[70%] text-white text-sm md:text-lg lg:text-xl">
+				<div className="flex flex-col gap-1.25 w-[80%] h-22">
+					<p>Введите логин</p>
+					<input className="p-2 rounded bg-gray-800" type="text" placeholder="Логин" />
+				</div>
+				<div className="flex flex-col gap-1.25 w-[80%] h-22">
+					<p>Введите пароль</p>
+					<input className="p-2 rounded bg-gray-800" type="password" placeholder="Пароль" />
+				</div>
+
+				<button onClick={successfulAuthor} className="w-[30%] h-12 p-2 rounded bg-pink-900/80 hover:scale-105 transition duration-300 ease-in-out cursor-pointer">
+					Войти
+				</button>
+			</form>
+		);
 	};
 
 	return (
@@ -50,10 +74,10 @@ export const Header = () => {
 
 			{/* логирование/ЛК */}
 			<div className={styles.button + " button-lk flex w-10/100 h-full bg-gray-900/50 p-3 rounded-[10px] text-sm md:text-lg lg:text-xl self-center"}>
-				{Button(() => openPopupHandler(), "Вход")}
+				{author ? Button(() => console.log("Вы вошли"), "Вы вошли") : Button(() => openPopupHandler(), "Вход")}
 			</div>
 
-			{isOpen && <Popup width="w-[50%]" height="h-[60%]" onClose={closePopupHandler} />}
+			{isOpen && <Popup objectPopup={FormAuthor()} width="w-[50%]" height="h-[60%]" onClose={closePopupHandler} />}
 		</div>
 	);
 };

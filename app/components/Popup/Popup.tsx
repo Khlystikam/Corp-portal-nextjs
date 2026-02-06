@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Popup({ width, height, onClose }: { width: string; height: string; onClose: () => void }) {
+export default function Popup({ objectPopup, width, height, onClose }: { objectPopup: React.ReactNode; width: string; height: string; onClose: () => void }) {
 	return (
 		<div className="fixed flex justify-center items-center w-dvw h-dvh inset-0 bg-gray-950/90 z-50">
 			<div className={`${width} ${height} relative flex justify-center items-center`}>
@@ -11,7 +11,7 @@ export default function Popup({ width, height, onClose }: { width: string; heigh
 					✕
 				</button>
 
-				<div className="flex justify-center items-center w-full h-full bg-gray-900 rounded-lg shadow-2xl animate-in fade-in zoom-in-95 duration-200">Popup</div>
+				<div className="flex justify-center items-center w-full h-full bg-gray-900 rounded-lg shadow-2xl animate-in fade-in zoom-in-95 duration-200">{objectPopup}</div>
 			</div>
 		</div>
 	);
