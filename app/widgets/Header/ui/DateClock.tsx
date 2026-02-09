@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import styles from "./Header.module.css";
 
 // функция даты и времени
 export const LiveDateTime = () => {
@@ -22,9 +23,9 @@ export const LiveDateTime = () => {
 	}
 
 	return (
-		<div className="h-full flex flex-row justify-between w-[20%] bg-gray-900/50 rounded-lg px-4 text-sm md:text-lg lg:text-xl">
-			<p className="w-[50%] text-left self-center">{date.toLocaleDateString("ru-RU")}</p>
-			<p className="w-[50%] text-right self-center">{date.toLocaleTimeString("ru-RU")}</p>
+		<div className={styles.мiddleBlockClock + " h-full flex flex-row justify-between w-[20%] bg-gray-900/50 rounded-lg px-4 text-sm md:text-lg lg:text-xl"}>
+			<p className={styles.blockClockText + " w-[50%] text-left self-center"}>{date.toLocaleDateString("ru-RU")}</p>
+			<p className={styles.blockClockText + " w-[50%] text-right self-center"}>{date.toLocaleTimeString("ru-RU")}</p>
 		</div>
 	);
 };

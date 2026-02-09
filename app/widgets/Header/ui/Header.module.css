@@ -17,9 +17,39 @@
 	}
 }
 
-/* screen 768px */
+/* screen 992px */
 @media screen and (max-width: 992px) {
+	.мiddleBlockNotifications {
+		width: 30%;
+	}
+
+	.мiddleBlockPersonalProgressBar {
+		width: 30%;
+	}
+
 	.button {
 		font-size: 16px;
+	}
+}
+
+/* screen 1200px */
+@media screen and (max-width: 1200px) {
+	.мiddleBlockClock {
+		width: 30%;
+		flex-direction: column;
+		justify-content: center;
+		font-size: 14px;
+	}
+
+	.blockClockText {
+		width: 100%;
+		text-align: center;
+	}
+}
+
+/* screen 1600px */
+@media screen and (max-width: 1600px) {
+	.мiddleBlockClock {
+		font-size: 14px;
 	}
 }

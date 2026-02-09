@@ -54,7 +54,7 @@ export const Header = () => {
 				<LiveDateTime />
 
 				{/* кнопки уведомлений */}
-				<div className="flex flex-row justify-around items-center w-15/100 h-full bg-gray-900/50 rounded-lg">
+				<div className={styles.мiddleBlockNotifications + " flex flex-row justify-around items-center w-15/100 h-full bg-gray-900/50 rounded-lg"}>
 					{HEADER_ITEMS.map((item) => {
 						return (
 							<button
@@ -69,7 +69,7 @@ export const Header = () => {
 				</div>
 
 				{/* личный прогресс бар */}
-				<div className="w-60/100 h-full bg-gray-900/50 rounded-lg"></div>
+				<div className={styles.мiddleBlockPersonalProgressBar + " w-60/100 h-full bg-gray-900/50 rounded-lg"}></div>
 			</div>
 
 			{/* логирование/ЛК */}
