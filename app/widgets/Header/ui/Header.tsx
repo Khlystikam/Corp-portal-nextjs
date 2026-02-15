@@ -6,10 +6,14 @@ import { LiveDateTime } from "./DateClock";
 import Button from "@/app/components/Buttons/Buttons";
 import Popup from "@/app/components/Popup/Popup";
 import styles from "./Header.module.css";
+import type { RootState } from "@/app/state/store";
+import { useDispatch, useSelector } from "react-redux";
+import { login, logout } from "../authReducer/authReducer";
 
 export const Header = () => {
 	const [isOpen, setIsOpen] = useState(false);
-	const [author, setAuthor] = useState(false);
+	const isAuth = useSelector((state: RootState) => state.auth.isAuth);
+	const dispatch = useDispatch();
 
 	const openPopupHandler = () => {
 		setIsOpen(true);
@@ -17,10 +21,6 @@ export const Header = () => {
 
 	const closePopupHandler = () => {
 		setIsOpen(false);
-	};
-
-	const successfulAuthor = () => {
-		setAuthor(true);
 	};
 
 	const FormAuthor = () => {
@@ -35,7 +35,14 @@ export const Header = () => {
 					<input className="p-2 rounded bg-gray-800" type="password" placeholder="Пароль" />
 				</div>
 
-				<button onClick={successfulAuthor} className="w-[30%] h-12 p-2 rounded bg-pink-900/80 hover:scale-105 transition duration-300 ease-in-out cursor-pointer">
+				<button
+					onClick={(e) => {
+						e.preventDefault();
+						dispatch(login());
+						closePopupHandler();
+					}}
+					className="w-[30%] h-12 p-2 rounded bg-pink-900/80 hover:scale-105 transition duration-300 ease-in-out cursor-pointer"
+				>
 					Войти
 				</button>
 			</form>
@@ -69,12 +76,12 @@ export const Header = () => {
 				</div>
 
 				{/* личный прогресс бар */}
-				<div className={styles.мiddleBlockPersonalProgressBar + " w-60/100 h-full bg-gray-900/50 rounded-lg"}></div>
+				<div className={styles.мiddleBlockPersonalProgressBar + " w-60/100 h-full bg-gray-900/50 rounded-lg"}>{isAuth}</div>
 			</div>
 
 			{/* логирование/ЛК */}
 			<div className={styles.button + " button-lk flex w-10/100 h-full bg-gray-900/50 p-3 rounded-[10px] text-sm md:text-lg lg:text-xl self-center"}>
-				{author ? Button(() => console.log("Вы вошли"), "Вы вошли") : Button(() => openPopupHandler(), "Вход")}
+				{isAuth ? Button(() => dispatch(logout()), "Выйти") : Button(() => openPopupHandler(), "Вход")}
 			</div>
 
 			{isOpen && <Popup objectPopup={FormAuthor()} width="w-[50%]" height="h-[60%]" onClose={closePopupHandler} />}
