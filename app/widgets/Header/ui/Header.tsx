@@ -5,15 +5,23 @@ import { HEADER_ITEMS } from "../model/HeaderIconsItem";
 import { LiveDateTime } from "./DateClock";
 import Button from "@/app/components/Buttons/Buttons";
 import Popup from "@/app/components/Popup/Popup";
+import Link from "next/link";
 import styles from "./Header.module.css";
+import Image from "next/image";
+import logo from "@/public/logo.webp";
 import type { RootState } from "@/app/state/store";
 import { useDispatch, useSelector } from "react-redux";
 import { login, logout } from "../authReducer/authReducer";
+import { ProfileUser } from "../../ProfileUser/ProfileUser";
 
 export const Header = () => {
 	const [isOpen, setIsOpen] = useState(false);
 	const isAuth = useSelector((state: RootState) => state.auth.isAuth);
 	const dispatch = useDispatch();
+
+	if (isAuth) {
+		console.log(123);
+	}
 
 	const openPopupHandler = () => {
 		setIsOpen(true);
@@ -51,9 +59,13 @@ export const Header = () => {
 
 	return (
 		<div className="flex flex-row justify-between w-full h-full">
-			{/*  */}
+			{/* logo */}
 			<div className="flex w-10/100 bg-gray-900/50 p-2 rounded-lg">
-				<p className="text-sm md:text-lg lg:text-xl self-center">Logo</p>
+				<div className="w-50 h-full">
+					<Link href="/">
+						<Image src={logo} alt="logo corp-portal" />
+					</Link>
+				</div>
 			</div>
 
 			<div className="w-70/100 h-full flex flex-row justify-around items-center p-2 gap-5 rounded-[10px]">
@@ -81,7 +93,7 @@ export const Header = () => {
 
 			{/* логирование/ЛК */}
 			<div className={styles.button + " button-lk flex w-10/100 h-full bg-gray-900/50 p-3 rounded-[10px] text-sm md:text-lg lg:text-xl self-center"}>
-				{isAuth ? Button(() => dispatch(logout()), "Выйти") : Button(() => openPopupHandler(), "Вход")}
+				{isAuth ? <ProfileUser /> : Button(() => openPopupHandler(), "Вход")}
 			</div>
 
 			{isOpen && <Popup objectPopup={FormAuthor()} width="w-[50%]" height="h-[60%]" onClose={closePopupHandler} />}
