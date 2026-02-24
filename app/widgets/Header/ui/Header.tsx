@@ -1,27 +1,23 @@
 "use client";
 
 import { useState } from "react";
-import { HEADER_ITEMS } from "../model/HeaderIconsItem";
-import { LiveDateTime } from "./DateClock";
-import Button from "@/app/components/Buttons/Buttons";
+import { HEADER_ITEMS } from "@/app/widgets/Header/model/HeaderIconsItem";
+import { LiveDateTime } from "@/app/widgets/Header/ui/DateClock";
+import { Button } from "@/app/components/Buttons/Buttons";
 import Popup from "@/app/components/Popup/Popup";
 import Link from "next/link";
-import styles from "./Header.module.css";
+import styles from "@/app/widgets/Header/ui/Header.module.css";
 import Image from "next/image";
 import logo from "@/public/logo.webp";
 import type { RootState } from "@/app/state/store";
 import { useDispatch, useSelector } from "react-redux";
-import { login, logout } from "../authReducer/authReducer";
-import { ProfileUser } from "../../ProfileUser/ProfileUser";
+import { login } from "@/app/widgets/Header/AuthReducer/AuthReducer";
+import { ProfileUser } from "@/app/widgets/ProfileUser/ui/ProfileUser";
 
 export const Header = () => {
 	const [isOpen, setIsOpen] = useState(false);
 	const isAuth = useSelector((state: RootState) => state.auth.isAuth);
 	const dispatch = useDispatch();
-
-	if (isAuth) {
-		console.log(123);
-	}
 
 	const openPopupHandler = () => {
 		setIsOpen(true);
@@ -92,8 +88,12 @@ export const Header = () => {
 			</div>
 
 			{/* логирование/ЛК */}
-			<div className={styles.button + " button-lk flex w-10/100 h-full bg-gray-900/50 p-3 rounded-[10px] text-sm md:text-lg lg:text-xl self-center"}>
-				{isAuth ? <ProfileUser /> : Button(() => openPopupHandler(), "Вход")}
+			<div
+				className={
+					styles.button + " button-lk flex justify-center items-center w-10/100 h-full bg-gray-900/50 p-3 rounded-[10px] text-sm md:text-lg lg:text-xl self-center"
+				}
+			>
+				{isAuth ? <ProfileUser /> : <Button onClick={openPopupHandler} title="Вход" />}
 			</div>
 
 			{isOpen && <Popup objectPopup={FormAuthor()} width="w-[50%]" height="h-[60%]" onClose={closePopupHandler} />}

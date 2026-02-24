@@ -1,1 +1,1 @@
-export { ProfileUser } from "./ui/ProfileUser";
+export { apiSlice } from "./ui/ProfileUser";

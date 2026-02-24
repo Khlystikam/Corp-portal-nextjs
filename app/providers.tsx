@@ -1,12 +1,12 @@
+// app/providers.tsx
 "use client";
 
+import { useState } from "react";
 import { Provider } from "react-redux";
-import { store } from "./state/store";
+import { makeStore } from "./state/store";
 
-type Props = {
-	children: React.ReactNode;
-};
-
-export function Providers({ children }: Props) {
+// Вариант А: Default Export
+export default function StoreProvider({ children }: { children: React.ReactNode }) {
+	const [store] = useState(() => makeStore());
 	return <Provider store={store}>{children}</Provider>;
 }

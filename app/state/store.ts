@@ -1,11 +1,19 @@
+"use client";
+
 import { configureStore } from "@reduxjs/toolkit";
-import authReducer from "../widgets/Header/authReducer/authReducer";
+import authReducer from "@/app/widgets/Header/AuthReducer/AuthReducer";
+import { apiSlice } from "@/app/widgets/ProfileUser/ProfileUserReducer/ProfileUserReducer";
 
-export const store = configureStore({
-	reducer: {
-		auth: authReducer,
-	},
-});
+export const makeStore = () => {
+	return configureStore({
+		reducer: {
+			auth: authReducer,
+			[apiSlice.reducerPath]: apiSlice.reducer,
+		},
+		middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(apiSlice.middleware),
+	});
+};
 
-export type RootState = ReturnType<typeof store.getState>;
-export type AppDispatch = typeof store.dispatch;
+export type AppStore = ReturnType<typeof makeStore>;
+export type RootState = ReturnType<AppStore["getState"]>;
+export type AppDispatch = AppStore["dispatch"];
