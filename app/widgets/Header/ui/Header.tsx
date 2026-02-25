@@ -90,7 +90,8 @@ export const Header = () => {
 			{/* логирование/ЛК */}
 			<div
 				className={
-					styles.button + " button-lk flex justify-center items-center w-10/100 h-full bg-gray-900/50 p-3 rounded-[10px] text-sm md:text-lg lg:text-xl self-center"
+					styles.button +
+					" button-lk relative flex justify-center items-center w-10/100 h-full bg-gray-900/50 p-3 rounded-[10px] text-sm md:text-lg lg:text-xl self-center"
 				}
 			>
 				{isAuth ? <ProfileUser /> : <Button onClick={openPopupHandler} title="Вход" />}
